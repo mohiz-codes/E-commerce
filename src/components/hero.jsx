@@ -1,5 +1,5 @@
 import heroImage from "../assets/herobg.png";
-import starBig from "../assets/vector.png"
+import starBig from "../assets/Vector.png"
 import starSmall from "../assets/vector2.png"
 import versace from "../assets/Group.png"
 import zara from "../assets/zara.png"
