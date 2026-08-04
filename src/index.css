@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* This creates the font-satoshi utility utility on-demand */
+  --font-satoshi: "Satoshi", sans-serif;
+}
+
+.integral-font {
+  font-family:'Integral CF';
+}
