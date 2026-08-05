@@ -11,19 +11,19 @@ function Navbar() {
 
     <div className="flex gap-[24px] max-w-[326px] w-full">
         <div className="flex gap-0.5">
-          <a href="#home" class="text-">
+          <a href="#home" className="text-">
             Shop
           </a>
           <img className="w-4 h-4 mt-[5px]" src={dropdown} alt="" />
         </div>
       
-        <a href="#about" class="text-">
+        <a href="#about" className="text-">
           On Sale
         </a>
-        <a href="#services" class="text-">
+        <a href="#services" className="text-">
           New Arrivals
         </a>
-        <a href="#contact" class="text-">
+        <a href="#contact" className="text-">
           Brands
         </a>
 

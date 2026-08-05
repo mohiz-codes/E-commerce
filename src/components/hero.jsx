@@ -1,22 +1,26 @@
 import heroImage from "../assets/herobg.png";
-import starBig from "../assets/Vector.png"
-import starSmall from "../assets/vector2.png"
-import versace from "../assets/Group.png"
-import zara from "../assets/zara.png"
-import gucci from "../assets/gucci.png"
-import parada from "../assets/prada.png"
-import calvin from "../assets/calvin.png"
-
+import starBig from "../assets/Vector.png";
+import starSmall from "../assets/vector2.png";
+import versace from "../assets/Group.png";
+import zara from "../assets/zara.png";
+import gucci from "../assets/gucci.png";
+import parada from "../assets/prada.png";
+import calvin from "../assets/calvin.png";
 
 function Hero() {
   return (
     <section className="  bg-[#F2F0F1]">
-        
-
       <div className="relative flex max-w-[1240px] w-full items-center mx-auto gap-[54px]">
-
-        <img className="absolute top-[86px] right-[0px]" src={starBig} alt="img" />
-        <img className="absolute top-[297px] right-[520px]" src={starSmall} alt="img" />
+        <img
+          className="absolute top-[86px] right-[0px]"
+          src={starBig}
+          alt="img"
+        />
+        <img
+          className="absolute top-[297px] right-[520px]"
+          src={starSmall}
+          alt="img"
+        />
 
         <div className="flex flex-col gap-[33px] max-w-[596px] w-full ">
           <h1 className="integral-font text-[64px] font-bold leading-[64px] tracking-0 ">
@@ -60,21 +64,19 @@ function Hero() {
         </div>
 
         <div className="max-w-[600px] w-full h-[630px]  overflow-hidden ">
-        <img src={heroImage} alt="img"  />
+          <img src={heroImage} alt="img" />
         </div>
       </div>
 
-      <div className="max-w-screen w-full flex justify-center bg-black  absolute bottom-[280px]">
-      <div className=" max-w-[1234px] w-full flex  justify-between gap-2 py-10.5 bg-black z-10 ">
-        <img className="w-[166px] h-[33px]" src= {versace} alt="img" />
-        <img className="w-[91px] h-[38px]" src= {zara} alt="img" />
-        <img className="w-[156px] h-[36px]" src= {gucci} alt="img" />
-        <img className="w-[194px] h-[32px]" src= {parada} alt="img" />
-        <img className="w-[206px] h-[33px]" src= {calvin} alt="img" />
-
+      <div className="max-w-screen w-full flex justify-center bg-black  ">
+        <div className=" max-w-[1234px] w-full flex  justify-between gap-2 py-10.5 bg-black z-10 ">
+          <img className="w-[166px] h-[33px]" src={versace} alt="img" />
+          <img className="w-[91px] h-[38px]" src={zara} alt="img" />
+          <img className="w-[156px] h-[36px]" src={gucci} alt="img" />
+          <img className="w-[194px] h-[32px]" src={parada} alt="img" />
+          <img className="w-[206px] h-[33px]" src={calvin} alt="img" />
+        </div>
       </div>
-</div>
-
     </section>
   );
 }
