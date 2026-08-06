@@ -81,6 +81,44 @@ export const topProducts = [
 ]
 
 
+export const Recommendation = [
+    {
+    title : "Polo with Contrast Trims",
+    image : i1,
+    originalPrice:242,
+    discountedPrice:212,
+    discount:'-20%',
+    rating: 4
+    },
+    {
+    title : "Gradient Graphic T-shirt",
+    image : i2,
+    originalPrice:145,
+    discountedPrice:null,
+    discount:null,
+    rating: 3
+    },
+    {
+    title : "Polo with Tipping Details",
+    image : i3,
+    originalPrice:180,
+    discountedPrice:null,
+    discount:null,
+    rating: 4
+    },
+    {
+    title : "Black Striped T-shirt",
+    image : i4,
+    originalPrice:180,
+    discountedPrice:120,
+    discount:'-30%',
+    rating: 5
+    },
+
+]
+
+
+
 export const reviews = [
     {
     id: 1,
@@ -132,3 +170,11 @@ export const reviews = [
     },
     
 ]
+
+export const breadcrumbs = [
+  "Home",
+  "Shop",
+  "Men",
+  "T-Shirts",
+  
+];

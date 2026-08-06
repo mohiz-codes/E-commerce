@@ -1,13 +1,20 @@
 import Review from "./ReviewCard"
 import { reviews } from "../lib/Data"
+import arl from "../assets/arrowleft.png"
+import arr from "../assets/arrowright.png"
+
 
 function ReviewSection() {
     return(
         <>
         
         <div className="flex flex-col py-[80px] gap-[40px] ">
-        <div className=" max-w-[1240px] w-full mx-auto ">
-        <h1 className="integral-font font-bold text-[48px] leading-[1] tracking-0" >OUR HAPPY COUSTOMER</h1>
+        <div className="flex justify-between items-center max-w-[1240px] w-full mx-auto ">
+        <h1 className=" integral-font font-bold text-[48px] leading-[1] tracking-0" >OUR HAPPY COUSTOMERS</h1>
+        <div className=" flex gap-[16px]">
+            <img className="w-[24px] h-[24px]" src={arl} alt="img" />
+            <img className="w-[24px] h-[24px]" src={arr} alt="img" />
+        </div>
          </div>
 
          <div className="relative">

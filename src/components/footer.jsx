@@ -7,6 +7,8 @@ import p2 from "../assets/b2.png"
 import p3 from "../assets/b3.png"
 import p4 from "../assets/b4.png"
 import p5 from "../assets/b5.png"
+import { TfiEmail } from "react-icons/tfi";
+
 
 
 
@@ -16,9 +18,10 @@ function Footer() {
         {/*this is the footer in black*/}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 flex justify-between max-w-[1240px] w-full rounded-[20px] bg-black px-[64px] py-[36px] " >
                 <h1 className="max-w-[551px] integral-font text-white font-bold text-[40px] leading-[45px] tracking-0">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
-                <div className="flex flex-col max-w-[350px] w-full gap-[14px]">
+                <div className="relative flex flex-col max-w-[350px] w-full gap-[14px]">
+                    <TfiEmail className="absolute size-6 left-1/20 top-1/10 text-[#00000066]" />
                     <input className="bg-white  rounded-[62px] px-4 py-3 pl-[52px]" type="email " placeholder="Enter your email address" />
-                    <button className="text-black bg-white rounded-[62px] px-4 py-3">Enter your email address</button>
+                    <button className="text-black bg-white rounded-[62px] px-4 py-3 hover:bg-black hover:text-white cursor-pointer border-2 hover:border-white ">Enter your email address</button>
                 </div>
             </div>
 

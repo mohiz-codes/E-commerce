@@ -3,10 +3,10 @@ import tick from "../assets/tick.png"
 
 
 
-function Review({review}) {
+function Review({review, variant='compact'}) {
     return(
     <>
-    <div className="max-w-[400px] flex shrink-0 flex-col gap-3 px-[32px] py-[28px] border-1 border-[#0000001A] rounded-[20px]">
+    <div className={`flex shrink-0 flex-col gap-3 px-[32px] py-[28px] border-1 border-[#0000001A] rounded-[20px] ${variant==='compact' ? 'max-w-[400px]' : 'max-w-[600px]'}`}>
      <Rating  rating={review.rating}/>
 
     <div className="flex gap-1">
@@ -17,6 +17,7 @@ function Review({review}) {
     </div>
    
     <p className="font-[400] text-[15px] leading-[22px] tracking-0 text-[#00000099]">{review.feedback}</p>
+    {variant==='expanded' && <p>posted on ----</p>}
     </div>
     </>
     )
