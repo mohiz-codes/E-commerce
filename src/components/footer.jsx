@@ -33,10 +33,10 @@ function Footer() {
                         <h1 className="integral-font font-bold text-[33.45px] leading-[0] tracking-0 " >SHOP.CO</h1>
                         <p className=" font-[400] text-[14px] leading-[22px] tracking-0 text-[#969696] ">We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
                         <div className="flex gap-[12px]">
-                            <img src={l1} alt="img" />
-                            <img src={l2} alt="img" />
-                            <img src={l3} alt="img" />
-                            <img src={l4} alt="img" />
+                            <img className="cursor-pointer" src={l1} alt="img" />
+                            <img className="cursor-pointer" src={l2} alt="img" />
+                            <img className="cursor-pointer" src={l3} alt="img" />
+                            <img className="cursor-pointer" src={l4} alt="img" />
                         </div>
                     </div>
                     <div className="max-w-[104px] w-full flex flex-col gap-[26px] ">
@@ -76,7 +76,7 @@ function Footer() {
                 <div className=" pb-[80px] flex max-w-[1240px] w-full justify-between">
                         <h4 className="text-[#969696]">Shop.co © 2000-2023, All Rights Reserved</h4>
                         <div className="flex">
-                            <img src={p1} alt="img" />
+                            <img  src={p1} alt="img" />
                             <img src={p2} alt="img" />
                             <img src={p3} alt="img" />
                             <img src={p4} alt="img" />

@@ -16,7 +16,7 @@ function ProductDetails() {
             <Breadcrumb items = {breadcrumbs}/>
             <Product/>
             <ProductReviews/>
-            <ClothingSection  title={'You Might Also Like'} products={Recommendation}/>
+            <ClothingSection  title={'You Might Also Like'}/>
 
             <Footer />
         </>
