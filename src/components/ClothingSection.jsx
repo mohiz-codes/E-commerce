@@ -1,5 +1,6 @@
 import Clothitem from "./ClothItems"
 import { Recommendation } from "../lib/Data.js";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,8 +13,10 @@ function ClothingSection({title}) {
         </h1>
          {/* this div is to make gap bw articles and view all button as it differs */}
         <div className="flex flex-col gap-9 items-center">
+            
         <Clothitem  products={Recommendation}/>
-         <button  className={` rounded-[62px] py-[16px] px-[54px] border-1 border-[#0000001A] font-[500px] text-[16px] leading-[1] tracking-0`}>View All</button>
+        
+         <button  className={` rounded-[62px] py-[16px] px-[54px] border-1 border-[#0000001A] font-[500px] text-[16px] leading-[1] tracking-0 hover:bg-black hover:text-white`}>View All</button>
         </div>
     </section>
     )

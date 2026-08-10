@@ -2,6 +2,7 @@ import dropdown from "../assets/frame2.png";
 import { CiSearch } from "react-icons/ci";
 import cart from "../assets/frame3.png"
 import account from "../assets/frame4.png"
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return ( 
@@ -39,7 +40,9 @@ function Navbar() {
     </div>
 
     <div className="flex gap-[14px]">
+      <Link to="/cart">
         <img src={cart} alt="img" />
+        </Link>
         <img src={account} alt="img" />
     </div>
       </nav>

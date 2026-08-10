@@ -3,6 +3,7 @@ import { Filter } from "../assets/SVGs";
 import PriceSlider from "./Slider";
 import Clothitem from "./ClothItems";
 import { Recommendation } from "../lib/Data";
+import { Link } from "react-router-dom";
 
 function Filters() {
   const colours = [
@@ -139,6 +140,7 @@ function Filters() {
         
 
         {/*this is the right  div*/}
+        
         <div className="flex flex-col w-full gap-4">
           <div className="flex justify-between ">
             <span className="font-bold text-[32px] font-[700] leading-1 tracking-0">
@@ -161,10 +163,11 @@ function Filters() {
             </div>
           </div>
           {/*this is the product div*/}
-
+          <Link to="/product">
           <div className="flex ">
             <Clothitem products={[...Recommendation, ...Recommendation]} />
-          </div>
+          </div></Link>
+          
           <hr className="max-w-[1240px] mx-auto w-full border-t border-[#D9D9D9] py-5 " />
           <div className="flex w-full justify-between relative px-[14px] py-[8px]">
             <div className="flex items-center w-[110px]">

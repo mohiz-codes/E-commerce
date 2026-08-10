@@ -1,16 +1,21 @@
 
 import Rating from "./Rating"
+import { Link, useNavigate } from "react-router-dom"
 
 function Clothitem({products}) {
+    const navigate = useNavigate();
     return(
         <>
         
          {/* this div contains the articles*/}
         <div className="flex flex-wrap gap-[20px]">
+            
 
             {products.map((product, index) => (
-                <div key={index} className=" flex flex-col gap-[16px]">
+                <div key={index} className=" flex flex-col gap-[16px] cursor-pointer" onClick={()=> navigate('/product')}>
+                
                 <img src={product.image} alt="img" />
+               
                 <p className="font-bold text-[20px] leading-[1] tracking-0">{product.title}</p>
                 {/*this is for the rating of article*/}
                <div className="flex gap-[13px] ">
@@ -28,7 +33,7 @@ function Clothitem({products}) {
                 </div>
             </div>
             ))}
-
+        
         </div>
        
 

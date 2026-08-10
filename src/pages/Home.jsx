@@ -14,13 +14,11 @@ function Home() {
     return(
         <>
     <Header/>
-    <Navbar/>
     <Hero/>
     <ClothingSection title={'New Arrival'} products={newProducts} />
     <ClothingSection title={'TOP SELLING'} products={topProducts} />
     <BrowseByaStyle/>
     <ReviewSection/>
-    <Footer/>
         </>
     )
 }

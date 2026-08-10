@@ -6,19 +6,21 @@ import Product from "../components/BuyProduct.jsx";
 import ProductReviews from "../components/ProductReviews.jsx";
 import ClothingSection from "../components/ClothingSection.jsx";
 import { Recommendation } from "../lib/Data.js";
+import { useEffect } from "react";
 
 
 function ProductDetails() {
+    useEffect(()=>{
+        window.scrollTo({top:0, behavior:"smooth"})
+    },[])
     return (
         <>
-            <Navbar />
 
             <Breadcrumb items = {breadcrumbs}/>
             <Product/>
             <ProductReviews/>
             <ClothingSection  title={'You Might Also Like'}/>
 
-            <Footer />
         </>
     );
 }
