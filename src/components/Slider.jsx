@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
-function PriceSlider() {
+function PriceSlider({ onChange }) {
   const [values, setValues] = useState([30, 100]);
 
   return (
@@ -11,7 +11,10 @@ function PriceSlider() {
         step={1}
         min={0}
         max={150}
-        onChange={(values) => setValues(values)}
+        onChange={(values) => {
+          setValues(values);
+          onChange(values);
+        }}
         renderTrack={({ props, children }) => (
           <div
             onMouseDown={props.onMouseDown}

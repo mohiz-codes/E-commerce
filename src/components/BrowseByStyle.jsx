@@ -17,7 +17,7 @@ function BrowseByaStyle() {
     <h1 className="integral-font font-bold text-5xl leading-[1] tracking-0 ">BROWSE BY DRESS STYLE</h1>
     <div className="flex flex-wrap justify-center gap-[20px] ">
         
-       <Link to="/ProductType" > <img src={style1} alt="img"/> </Link>
+    <Link to="/productType" > <img src={style1} alt="img"/> </Link>
         <img src={style2} alt="img" />
         <img src={style3} alt="img" />
         <img src={style4} alt="img" />

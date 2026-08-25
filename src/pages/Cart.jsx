@@ -1,8 +1,6 @@
 import Breadcrumb from "../components/BreadCrumb";
 import YourCart from "../components/Checkout";
-import Footer from "../components/footer";
 import Header from "../components/header";
-import Navbar from "../components/navbar";
 
 export default function Cart() {
      const cart = ["Home","Cart"]

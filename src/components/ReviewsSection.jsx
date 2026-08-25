@@ -1,10 +1,17 @@
 import Review from "./ReviewCard"
-import { reviews } from "../lib/Data"
 import arl from "../assets/arrowleft.png"
 import arr from "../assets/arrowright.png"
+import { useEffect, useState } from "react";
+import { getReviews } from "../lib/api.js";
 
 
 function ReviewSection() {
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        getReviews().then(setReviews).catch(() => setReviews([]));
+    }, []);
+
     return(
         <>
         

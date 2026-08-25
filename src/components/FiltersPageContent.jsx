@@ -2,10 +2,19 @@ import { FaChevronLeft, FaChevronRight, FaChevronUp } from "react-icons/fa";
 import { Filter } from "../assets/SVGs";
 import PriceSlider from "./Slider";
 import Clothitem from "./ClothItems";
-import { Recommendation } from "../lib/Data";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getProducts } from "../lib/api.js";
 
-function Filters() {
+function Filters({ initialFilters = {} }) {
+  const [products, setProducts] = useState([]);
+  const [sort, setSort] = useState("newest");
+  const [filters, setFilters] = useState(initialFilters);
+
+  useEffect(() => {
+    const query = new URLSearchParams({ sort, ...filters });
+    getProducts(`?${query}`).then((data) => setProducts(data.products));
+  }, [sort, filters]);
+
   const colours = [
     "#00C12",
     "#F50606",
@@ -50,7 +59,7 @@ function Filters() {
           <div className="w-full flex flex-col gap-4">
             {clothType.map((type, index) => (
               <div className=" flex justify-between">
-                <span key={index} className="text-[#00000099]">
+                <span key={index} onClick={() => setFilters({ ...filters, clothingType: type })} className="text-[#00000099] cursor-pointer">
                   {type}
                 </span>
                 <FaChevronRight className="text-[#00000099]" />
@@ -67,7 +76,7 @@ function Filters() {
               </span>
               <FaChevronUp />
             </div>
-            <PriceSlider />
+            <PriceSlider onChange={([minPrice, maxPrice]) => setFilters({ ...filters, minPrice, maxPrice })} />
           </div>
           <hr className="max-w-[1240px] mx-auto w-full border-t border-[#D9D9D9] " />
 
@@ -85,6 +94,7 @@ function Filters() {
               {colours.map((colour, index) => (
                 <div
                   key={index}
+                  onClick={() => setFilters({ ...filters, color: colour })}
                   style={{ backgroundColor: colour }}
                   className="w-[37px] h-[37px] border-1 border-[#00000033] rounded-[50%] bg-[#00C12B] cursor-pointer"
                 ></div>
@@ -109,6 +119,7 @@ function Filters() {
                   {sizes.map((size, index) => (
                     <button
                       key={index}
+                      onClick={() => setFilters({ ...filters, size })}
                       className="px-[20px] py-[10px] bg-[#F0F0F0] text-[#00000099] rounded-[62px] "
                     >
                       {size}
@@ -127,8 +138,8 @@ function Filters() {
                 </div>
 
                 <div className="w-full flex flex-col gap-4">
-                  {DressStyle.map((style, index) => (
-                    <div className=" flex justify-between">
+                  {DressStyle.map((style) => (
+                    <div key={style} onClick={() => setFilters({ ...filters, dressStyle: style })} className="flex justify-between cursor-pointer">
                       <span className="text-[#00000099]">{style}</span>
                       <FaChevronRight className="text-[#00000099]" />
                     </div>
@@ -144,29 +155,30 @@ function Filters() {
         <div className="flex flex-col w-full gap-4">
           <div className="flex justify-between ">
             <span className="font-bold text-[32px] font-[700] leading-1 tracking-0">
-              Casual
+              {filters.sale === "true" ? "On Sale" : filters.section === "new-arrivals" ? "New Arrivals" : "Shop"}
             </span>
 
             <div className="flex gap-4">
               <div>
                 <span className="font-[400] text-[#00000099]">
-                  Showing 1-10 of 100 Products
+                  Showing {products.length} Products
                 </span>
               </div>
               <div>
                 <span className="font-[400] text-[#00000099]">Sort by:</span>
-                <select name="" id="">
-                  <option value="">Most Popular</option>
-                  <option value="">Least Popular</option>
+                <select value={sort} onChange={(event) => setSort(event.target.value)}>
+                  <option value="newest">Newest</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="priceAsc">Price: Low to High</option>
+                  <option value="priceDesc">Price: High to Low</option>
                 </select>
               </div>
             </div>
           </div>
           {/*this is the product div*/}
-          <Link to="/product">
           <div className="flex ">
-            <Clothitem products={[...Recommendation, ...Recommendation]} />
-          </div></Link>
+            <Clothitem products={products} />
+          </div>
           
           <hr className="max-w-[1240px] mx-auto w-full border-t border-[#D9D9D9] py-5 " />
           <div className="flex w-full justify-between relative px-[14px] py-[8px]">

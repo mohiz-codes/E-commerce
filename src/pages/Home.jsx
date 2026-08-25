@@ -1,25 +1,48 @@
-import Header  from '../components/header.jsx'
-import Navbar from '../components/navbar.jsx'
-import Hero from '../components/hero.jsx'
-import NewArrivals from '../components/ClothingSection.jsx'
-import { newProducts } from '../lib/Data.js'
-import ClothingSection from '../components/ClothingSection.jsx'
-import { topProducts } from '../lib/Data.js'
-import BrowseByaStyle from '../components/BrowseByStyle.jsx'
-import Review from '../components/ReviewCard.jsx'
-import ReviewSection from '../components/ReviewsSection.jsx'
-import Footer from '../components/footer.jsx'
+import { useEffect, useState } from "react";
+import Header from "../components/header.jsx";
+import Hero from "../components/hero.jsx";
+import ClothingSection from "../components/ClothingSection.jsx";
+import BrowseByaStyle from "../components/BrowseByStyle.jsx";
+import ReviewSection from "../components/ReviewsSection.jsx";
+import { getProducts } from "../lib/api.js";
 
 function Home() {
-    return(
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        getProducts()
+            .then((data) => setProducts(data.products))
+            .catch(() => setError("Unable to load products"))
+            .finally(() => setLoading(false));
+    }, []);
+
+    const newArrivals = products.filter((product) =>
+        ["new-arrival", "new-arrivals"].includes(
+            product.section?.toLowerCase().replaceAll(" ", "-")
+        )
+    );
+    const topSelling = products.filter((product) =>
+        product.section?.toLowerCase().replaceAll(" ", "-") === "top-selling"
+    );
+
+    return (
         <>
-    <Header/>
-    <Hero/>
-    <ClothingSection title={'New Arrival'} products={newProducts} />
-    <ClothingSection title={'TOP SELLING'} products={topProducts} />
-    <BrowseByaStyle/>
-    <ReviewSection/>
+            <Header />
+            <Hero />
+            {loading && <p className="text-center py-10">Loading products...</p>}
+            {error && <p className="text-center py-10 text-red-500">{error}</p>}
+            {!loading && !error && (
+                <>
+                    <ClothingSection title="New Arrival" products={newArrivals.slice(0, 4)} />
+                    <ClothingSection title="TOP SELLING" products={topSelling.slice(0, 4)} />
+                </>
+            )}
+            <BrowseByaStyle />
+            <ReviewSection />
         </>
-    )
+    );
 }
+
 export default Home

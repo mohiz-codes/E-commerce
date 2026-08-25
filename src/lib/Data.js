@@ -1,11 +1,11 @@
-import i1 from "../assets/s1.png"
-import i2 from "../assets/s2.png"
-import i3 from "../assets/s3.png"
-import i4 from "../assets/s4.png"
-import i5 from "../assets/s5.png"
-import i6 from "../assets/s6.png"
-import i7 from "../assets/s7.png"
-import i8 from "../assets/s8.png"
+const i1 = "/products/s1.png"
+const i2 = "/products/s2.png"
+const i3 = "/products/s3.png"
+const i4 = "/products/s4.png"
+const i5 = "/products/s5.png"
+const i6 = "/products/s6.png"
+const i7 = "/products/s7.png"
+const i8 = "/products/s8.png"
 
 export const newProducts = [
     {
