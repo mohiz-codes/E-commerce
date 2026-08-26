@@ -80,3 +80,10 @@ export function createOrder(order) {
         body: JSON.stringify(order)
     });
 }
+
+export function createPaymentIntent(amount) {
+    return request("/payments/create-intent", {
+        method: "POST",
+        body: JSON.stringify({ amount })
+    });
+}
