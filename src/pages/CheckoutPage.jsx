@@ -42,7 +42,7 @@ function PaymentForm({ shipping, cart, total, onSuccess, onBack }) {
 
     try {
       // 1. Ask backend to create a PaymentIntent
-      const { clientSecret } = await createPaymentIntent(total);
+      const { clientSecret } = await createPaymentIntent(cart);
 
       // 2. Confirm the card payment via Stripe
       const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {

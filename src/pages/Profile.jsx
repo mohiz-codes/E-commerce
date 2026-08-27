@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth.js";
 import { getOrders } from "../lib/api.js";
 import Breadcrumb from "../components/BreadCrumb.jsx";
+import ReviewDialog from "../components/ReviewDialog.jsx";
 import { FiPackage, FiUser, FiMail, FiCalendar, FiLogOut, FiShoppingBag, FiArrowRight } from "react-icons/fi";
 
 function Profile() {
@@ -11,6 +12,7 @@ function Profile() {
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
   const [ordersError, setOrdersError] = useState("");
+  const [reviewingProduct, setReviewingProduct] = useState(null);
 
   const breadcrumbs = ["Home", "My Account"];
 
@@ -38,6 +40,13 @@ function Profile() {
   function handleLogout() {
     logout();
     navigate("/");
+  }
+
+  function markProductReviewed(productId) {
+    setOrders((currentOrders) => currentOrders.map((order) => ({
+      ...order,
+      items: order.items.map((item) => item.product === productId ? { ...item, canReview: false } : item)
+    })));
   }
 
   const initial = user?.name ? user.name.charAt(0).toUpperCase() : "U";
@@ -211,9 +220,12 @@ function Profile() {
                               </div>
                             </div>
 
-                            <span className="font-bold text-sm text-black shrink-0">
-                              ${item.price}
-                            </span>
+                            <div className="flex shrink-0 flex-col items-end gap-2">
+                              <span className="font-bold text-sm text-black">${item.price}</span>
+                              {order.status === "delivered" && item.canReview && (
+                                <button type="button" onClick={() => setReviewingProduct(item)} className="rounded-full bg-black px-3 py-2 text-xs font-medium text-white hover:bg-neutral-800">Leave a Review</button>
+                              )}
+                            </div>
                           </div>
                         );
                       })}
@@ -235,6 +247,7 @@ function Profile() {
           )}
         </div>
       </div>
+      {reviewingProduct && <ReviewDialog product={reviewingProduct} onClose={() => setReviewingProduct(null)} onSubmitted={markProductReviewed} />}
     </div>
   );
 }

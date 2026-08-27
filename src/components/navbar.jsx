@@ -71,7 +71,7 @@ function Navbar() {
           <div className="flex items-center gap-1 cursor-pointer hover:opacity-70 transition-opacity">
             <Link to="/productType">Shop</Link>
             <img className="w-3.5 h-3.5" src={dropdown} alt="dropdown" />
-          </div>
+          </div>  
           <Link to="/productType?sale=true" className="hover:opacity-70 transition-opacity shrink-0">
             On Sale
           </Link>
@@ -188,6 +188,12 @@ function Navbar() {
                     </div>
 
                     <div className="flex flex-col gap-0.5 mt-1">
+                      {user?.role === "admin" && (
+                        <Link to="/admin" onClick={() => setShowAccountMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm text-black hover:bg-[#F0F0F0] rounded-xl transition-colors font-medium">
+                          <FiPackage className="text-base text-gray-500" />
+                          <span>Admin Dashboard</span>
+                        </Link>
+                      )}
                       <Link
                         to="/profile"
                         onClick={() => setShowAccountMenu(false)}

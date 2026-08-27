@@ -10,7 +10,7 @@ function ClothingSection({ title, products = [], viewAllTo = "/productType" }) {
         <h1 className="integral-font font-bold text-[48px] leading-[1] tracking-0 text-black">
             {title}
         </h1>
-        <div className="flex flex-col gap-9 items-center">
+        <div className="flex w-full max-w-[1240px] flex-col items-center gap-9 px-4 md:px-0">
             
         <Clothitem products={products}/>
         

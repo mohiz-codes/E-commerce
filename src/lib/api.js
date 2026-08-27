@@ -81,9 +81,33 @@ export function createOrder(order) {
     });
 }
 
-export function createPaymentIntent(amount) {
+export function createPaymentIntent(items) {
     return request("/payments/create-intent", {
         method: "POST",
-        body: JSON.stringify({ amount })
+        body: JSON.stringify({ items })
     });
+}
+
+export function getReviewEligibility(productId) {
+    return request(`/reviews/eligibility/${productId}`);
+}
+
+export function getAdminOrders() {
+    return request("/orders/admin");
+}
+
+export function getSalesSummary() {
+    return request("/orders/admin/summary");
+}
+
+export function updateOrderStatus(id, status) {
+    return request(`/orders/${id}/status`, { method: "PATCH", body: JSON.stringify({ status }) });
+}
+
+export function refundOrder(id, reason) {
+    return request(`/orders/${id}/refund`, { method: "POST", body: JSON.stringify({ reason }) });
+}
+
+export function createProduct(product) {
+    return request("/products", { method: "POST", body: JSON.stringify(product) });
 }

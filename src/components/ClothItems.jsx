@@ -8,13 +8,17 @@ function Clothitem({products}) {
         <>
         
          {/* this div contains the articles*/}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px]">
+        <div className="grid w-full max-w-[1240px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             
 
             {products.map((product) => (
                 <div key={product._id} className="flex min-w-0 flex-col gap-[16px] cursor-pointer" onClick={() => navigate(`/product/${product._id}`)}>
                 
-                <img src={Array.isArray(product.image) ? product.image[0] : product.image} alt={product.title} />
+                <img
+                  className="aspect-square w-full rounded-[20px] bg-[#F0F0F0] object-cover"
+                  src={Array.isArray(product.image) ? product.image[0] : product.image}
+                  alt={product.title}
+                />
                
                 <p className="font-bold text-[20px] leading-[1] tracking-0">{product.title}</p>
                 {/*this is for the rating of article*/}

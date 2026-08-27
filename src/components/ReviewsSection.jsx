@@ -84,8 +84,7 @@ function ReviewSection() {
 
         <div className="relative max-w-[1240px] w-full mx-auto">
 
-            <div className="w-32 h-full absolute top-0 right-0 backdrop-blur-[2px] z-10"></div>
-             <div className="w-15 h-full absolute top-0 left-0 backdrop-blur-[2px] z-10"></div>
+           
         <div ref={viewportRef} className="overflow-hidden">
         <div ref={trackRef} className=" flex gap-5 transition-transform duration-500 ease-in-out"
          style={{
