@@ -22,14 +22,18 @@ export function CartProvider({ children }) {
     });
   }
 
-  function updateQuantity(id, quantity) {
+  function updateQuantity(id, quantity, size = "", color = "") {
     setCart((items) => items
-      .map((item) => item._id === id ? { ...item, quantity } : item)
+      .map((item) => item._id === id && item.size === size && item.color === color
+        ? { ...item, quantity }
+        : item)
       .filter((item) => item.quantity > 0));
   }
 
-  function removeFromCart(id) {
-    setCart((items) => items.filter((item) => item._id !== id));
+  function removeFromCart(id, size = "", color = "") {
+    setCart((items) => items.filter((item) =>
+      item._id !== id || item.size !== size || item.color !== color
+    ));
   }
 
   function clearCart() {

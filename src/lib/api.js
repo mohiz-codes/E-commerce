@@ -14,7 +14,7 @@ async function request(path, options = {}) {
     try {
         response = await fetch(`${API_URL}${path}`, { ...options, headers });
     } catch (networkErr) {
-        throw new Error("Unable to connect to server. Please check your connection.");
+        throw new Error("Unable to connect to server. Please check your connection.", { cause: networkErr });
     }
 
     if (!response.ok) {

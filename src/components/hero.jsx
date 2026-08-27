@@ -6,6 +6,7 @@ import zara from "../assets/zara.png";
 import gucci from "../assets/gucci.png";
 import parada from "../assets/prada.png";
 import calvin from "../assets/calvin.png";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -31,9 +32,9 @@ function Hero() {
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-          <button className="max-w-[210px] py-[16px] px-[54px] bg-black text-white rounded-[62px] leading-[1]">
+          <Link to="/productType" className="max-w-[210px] py-[16px] px-[54px] bg-black text-white rounded-[62px] leading-[1] text-center">
             Shop Now
-          </button>
+          </Link>
 
           <div className="max-w-[596px] w-full flex justify-between">
             <div className="flex flex-col max-w-[171px] w-full ">

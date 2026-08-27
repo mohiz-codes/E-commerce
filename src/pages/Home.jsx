@@ -35,8 +35,8 @@ function Home() {
             {error && <p className="text-center py-10 text-red-500">{error}</p>}
             {!loading && !error && (
                 <>
-                    <ClothingSection title="New Arrival" products={newArrivals.slice(0, 4)} />
-                    <ClothingSection title="TOP SELLING" products={topSelling.slice(0, 4)} />
+                    <ClothingSection title="New Arrival" products={newArrivals.slice(0, 4)} viewAllTo="/productType?section=new-arrivals" />
+                    <ClothingSection title="TOP SELLING" products={topSelling.slice(0, 4)} viewAllTo="/productType?section=top-selling" />
                 </>
             )}
             <BrowseByaStyle />

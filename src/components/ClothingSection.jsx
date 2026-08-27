@@ -1,8 +1,9 @@
 import Clothitem from "./ClothItems"
+import { Link } from "react-router-dom";
 
 
 
-function ClothingSection({ title, products = [] }) {
+function ClothingSection({ title, products = [], viewAllTo = "/productType" }) {
     return(
        
     <section className="flex flex-col justify-center items-center gap-[55px] pt-[72px] pb-20 w-full">
@@ -13,7 +14,7 @@ function ClothingSection({ title, products = [] }) {
             
         <Clothitem products={products}/>
         
-         <button className="rounded-[62px] py-[16px] px-[54px] border-1 border-[#0000001A] font-[500px] text-[16px] leading-[1] tracking-0 hover:bg-black hover:text-white">View All</button>
+         <Link to={viewAllTo} className="rounded-[62px] py-[16px] px-[54px] border-1 border-[#0000001A] font-[500px] text-[16px] leading-[1] tracking-0 hover:bg-black hover:text-white">View All</Link>
         </div>
     </section>
     )

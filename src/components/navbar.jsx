@@ -2,7 +2,7 @@ import dropdown from "../assets/frame2.png";
 import { CiSearch } from "react-icons/ci";
 import cartIcon from "../assets/frame3.png";
 import account from "../assets/frame4.png";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { getProducts } from "../lib/api.js";
 import { useCart } from "../context/useCart.js";
@@ -19,17 +19,10 @@ function Navbar() {
   const accountRef = useRef(null);
 
   const navigate = useNavigate();
-  const location = useLocation();
   const { cart: cartItems } = useCart();
   const { user, isAuthenticated, logout } = useAuth();
   
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-  // Close dropdowns on route change
-  useEffect(() => {
-    setShowSuggestions(false);
-    setShowAccountMenu(false);
-  }, [location.pathname]);
 
   // Handle outside clicks to close dropdowns
   useEffect(() => {
@@ -79,13 +72,13 @@ function Navbar() {
             <Link to="/productType">Shop</Link>
             <img className="w-3.5 h-3.5" src={dropdown} alt="dropdown" />
           </div>
-          <Link to="/productType?sale=true" className="hover:opacity-70 transition-opacity">
+          <Link to="/productType?sale=true" className="hover:opacity-70 transition-opacity shrink-0">
             On Sale
           </Link>
-          <Link to="/productType?section=new-arrivals" className="hover:opacity-70 transition-opacity">
+          <Link to="/productType?section=new-arrivals" className="hover:opacity-70 transition-opacity shrink-0">
             New Arrivals
           </Link>
-          <Link to="/productType" className="hover:opacity-70 transition-opacity">
+          <Link to="/productType" className="hover:opacity-70 transition-opacity shrink-0">
             Brands
           </Link>
         </div>

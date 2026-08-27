@@ -22,7 +22,7 @@ function YourCart() {
               const image = Array.isArray(item.image) ? item.image[0] : item.image;
               const price = item.discountedPrice ?? item.originalPrice;
               return (
-                <div key={item._id} className="flex w-full gap-5 py-6 border-b border-[#0000001A]">
+                <div key={`${item._id}-${item.size}-${item.color}`} className="flex w-full gap-5 py-6 border-b border-[#0000001A]">
                   <img className="w-32 h-32 object-cover" src={image} alt={item.title} />
                   <div className="flex justify-between w-full">
                     <div className="flex flex-col justify-between">
@@ -32,13 +32,13 @@ function YourCart() {
                       <span className="text-2xl font-bold">${price}</span>
                     </div>
                     <div className="flex flex-col justify-between items-end">
-                      <button onClick={() => removeFromCart(item._id)} aria-label="Remove item">
+                      <button onClick={() => removeFromCart(item._id, item.size, item.color)} aria-label={`Remove ${item.title}`}>
                         <RiDeleteBinFill className="text-red-600 size-6" />
                       </button>
                       <div className="flex items-center gap-5 bg-[#F0F0F0] px-5 py-3 rounded-full">
-                        <button onClick={() => updateQuantity(item._id, item.quantity - 1)}><FaMinus /></button>
+                        <button onClick={() => updateQuantity(item._id, item.quantity - 1, item.size, item.color)} aria-label={`Decrease ${item.title} quantity`}><FaMinus /></button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item._id, item.quantity + 1)}><FaPlus /></button>
+                        <button onClick={() => updateQuantity(item._id, item.quantity + 1, item.size, item.color)} aria-label={`Increase ${item.title} quantity`}><FaPlus /></button>
                       </div>
                     </div>
                   </div>

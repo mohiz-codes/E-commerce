@@ -12,13 +12,14 @@ function Filters({ initialFilters = {} }) {
 
   useEffect(() => {
     const query = new URLSearchParams({ sort, ...filters });
-    getProducts(`?${query}`).then((data) => setProducts(data.products));
+    getProducts(`?${query}`)
+      .then((data) => setProducts(data.products))
+      .catch(() => setProducts([]));
   }, [sort, filters]);
 
   const colours = [
-    "#00C12",
+    "#00C12B",
     "#F50606",
-    "#F5DD06",
     "#F5DD06",
     "#06CAF5",
     "#063AF5",
@@ -57,9 +58,9 @@ function Filters({ initialFilters = {} }) {
           </div>
           {/*this is the cloths type shirt,pant etc div*/}
           <div className="w-full flex flex-col gap-4">
-            {clothType.map((type, index) => (
-              <div className=" flex justify-between">
-                <span key={index} onClick={() => setFilters({ ...filters, clothingType: type })} className="text-[#00000099] cursor-pointer">
+            {clothType.map((type) => (
+              <div key={type} className=" flex justify-between">
+                <span onClick={() => setFilters({ ...filters, clothingType: type })} className="text-[#00000099] cursor-pointer">
                   {type}
                 </span>
                 <FaChevronRight className="text-[#00000099]" />

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { createOrder, createPaymentIntent } from "../lib/api.js";
 import { useCart } from "../context/useCart.js";
 import { useAuth } from "../context/useAuth.js";
@@ -27,7 +27,7 @@ const stripePromise = loadStripe(
 );
 
 // --- Inner payment form that uses Stripe hooks ---
-function PaymentForm({ shipping, cart, subtotal, delivery, total, onSuccess, onBack }) {
+function PaymentForm({ shipping, cart, total, onSuccess, onBack }) {
   const stripe = useStripe();
   const elements = useElements();
   const [paying, setPaying] = useState(false);
@@ -157,7 +157,6 @@ function PaymentForm({ shipping, cart, subtotal, delivery, total, onSuccess, onB
 function CheckoutPage() {
   const { cart, clearCart } = useCart();
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   // step 1 = shipping form, step 2 = payment
   const [step, setStep] = useState(1);
@@ -170,16 +169,6 @@ function CheckoutPage() {
   });
   const [orderResult, setOrderResult] = useState(null);
   const [shippingError, setShippingError] = useState("");
-
-  useEffect(() => {
-    if (user) {
-      setShipping((prev) => ({
-        ...prev,
-        name: prev.name || user.name || "",
-        email: prev.email || user.email || ""
-      }));
-    }
-  }, [user]);
 
   const subtotal = cart.reduce(
     (sum, item) => sum + (item.discountedPrice ?? item.originalPrice) * item.quantity,
@@ -381,8 +370,6 @@ function CheckoutPage() {
                   <PaymentForm
                     shipping={shipping}
                     cart={cart}
-                    subtotal={subtotal}
-                    delivery={delivery}
                     total={total}
                     onSuccess={handlePaymentSuccess}
                     onBack={() => setStep(1)}
@@ -402,7 +389,7 @@ function CheckoutPage() {
                 const image = Array.isArray(item.image) ? item.image[0] : item.image;
                 const price = item.discountedPrice ?? item.originalPrice;
                 return (
-                  <div key={item._id} className="flex items-center gap-3 py-3">
+                  <div key={`${item._id}-${item.size}-${item.color}`} className="flex items-center gap-3 py-3">
                     <img src={image} alt={item.title} className="w-14 h-14 rounded-xl object-cover bg-neutral-100 shrink-0" />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-xs text-black truncate">{item.title}</p>

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth.js";
 import { getOrders } from "../lib/api.js";
 import Breadcrumb from "../components/BreadCrumb.jsx";
-import { FiPackage, FiUser, FiMail, FiCalendar, FiLogOut, FiShoppingBag, FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import { FiPackage, FiUser, FiMail, FiCalendar, FiLogOut, FiShoppingBag, FiArrowRight } from "react-icons/fi";
 
 function Profile() {
   const { user, logout } = useAuth();
@@ -16,9 +16,6 @@ function Profile() {
 
   useEffect(() => {
     let isMounted = true;
-    setLoadingOrders(true);
-    setOrdersError("");
-
     getOrders()
       .then((data) => {
         if (isMounted) {

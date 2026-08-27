@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
           }
         });
     }
-  }, []);
+  }, [auth?.token]);
 
   return (
     <AuthContext.Provider

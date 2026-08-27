@@ -5,7 +5,7 @@ import { login, signup } from "../lib/api.js";
 import { useAuth } from "../context/useAuth.js";
 
 function AuthPage({ mode = "login" }) {
-  const [isSignup, setIsSignup] = useState(mode === "signup");
+  const isSignup = mode === "signup";
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -18,12 +18,6 @@ function AuthPage({ mode = "login" }) {
   // Extract next redirect parameter or default to home
   const searchParams = new URLSearchParams(location.search);
   const next = searchParams.get("next") || "/";
-
-  // Sync mode prop with internal state if prop changes
-  useEffect(() => {
-    setIsSignup(mode === "signup");
-    setError("");
-  }, [mode]);
 
   // If already authenticated, redirect immediately
   useEffect(() => {
@@ -38,7 +32,6 @@ function AuthPage({ mode = "login" }) {
   }
 
   function handleTabSwitch(signupMode) {
-    setIsSignup(signupMode);
     setError("");
     navigate(signupMode ? `/signup${location.search}` : `/login${location.search}`, { replace: true });
   }

@@ -1,5 +1,4 @@
 import Breadcrumb from "../components/BreadCrumb.jsx";
-import { breadcrumbs } from "../lib/Data.js";
 import Product from "../components/BuyProduct.jsx";
 import ProductReviews from "../components/ProductReviews.jsx";
 import ClothingSection from "../components/ClothingSection.jsx";
@@ -31,7 +30,7 @@ function ProductDetails() {
     return (
         <>
 
-            <Breadcrumb items = {breadcrumbs}/>
+            <Breadcrumb items={["Home", "Shop", "Men", "T-Shirts"]}/>
             <Product product={product}/>
             <ProductReviews productId={product._id}/>
             <ClothingSection title="You Might Also Like" products={recommendations}/>

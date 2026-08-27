@@ -2,7 +2,6 @@ import { Filter } from "../assets/SVGs";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Review from "./ReviewCard";
-import { FaChevronDown, FaStar } from "react-icons/fa";
 import { FiAlertCircle, FiCheckCircle } from "react-icons/fi";
 import { createReview, getProductReviews } from "../lib/api.js";
 import { useAuth } from "../context/useAuth.js";
@@ -23,12 +22,6 @@ function ProductReviews({ productId }) {
     rating: 5,
     feedback: ""
   });
-
-  useEffect(() => {
-    if (user?.name) {
-      setForm((prev) => ({ ...prev, name: user.name }));
-    }
-  }, [user]);
 
   useEffect(() => {
     getProductReviews(productId)
