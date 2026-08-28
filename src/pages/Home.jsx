@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/header.jsx";
 import Hero from "../components/hero.jsx";
 import ClothingSection from "../components/ClothingSection.jsx";
-import BrowseByaStyle from "../components/BrowseByStyle.jsx";
+import BrowseByStyle from "../components/BrowseByStyle.jsx";
 import ReviewSection from "../components/ReviewsSection.jsx";
 import { getProducts } from "../lib/api.js";
 
@@ -39,7 +39,7 @@ function Home() {
                     <ClothingSection title="TOP SELLING" products={topSelling.slice(0, 4)} viewAllTo="/productType?section=top-selling" />
                 </>
             )}
-            <BrowseByaStyle />
+            <BrowseByStyle />
             <ReviewSection />
         </>
     );

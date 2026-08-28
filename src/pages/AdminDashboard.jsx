@@ -36,6 +36,10 @@ export default function AdminDashboard() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   async function changeStatus(id, status) {
     try {
       const updated = await updateOrderStatus(id, status);
@@ -79,7 +83,9 @@ export default function AdminDashboard() {
   }
 
   return (
+    <>
     <main className="max-w-[1240px] mx-auto w-full px-4 md:px-0 py-10 pb-24">
+      
       <h1 className="integral-font text-3xl md:text-4xl font-bold">Admin Dashboard</h1>
       <p className="text-sm text-gray-500 mt-2">Manage sales, fulfilment, refunds, and your catalogue.</p>
       {error && <p className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-700">{error}</p>}
@@ -116,5 +122,6 @@ export default function AdminDashboard() {
         </form>
       </section>
     </main>
+    </>
   );
 }

@@ -17,6 +17,10 @@ function Profile() {
   const breadcrumbs = ["Home", "My Account"];
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
     let isMounted = true;
     getOrders()
       .then((data) => {

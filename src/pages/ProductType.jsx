@@ -1,24 +1,26 @@
-import Breadcrumb from "../components/BreadCrumb"
-import Filters from "../components/FiltersPageContent"
-import Header from "../components/header"
+import Breadcrumb from "../components/BreadCrumb";
+import Filters from "../components/FiltersPageContent";
+import Header from "../components/header";
 import { useSearchParams } from "react-router-dom";
-
 
 function ProductType() {
     const [params] = useSearchParams();
-    const path = ["Home", params.get("section") === "new-arrivals" ? "New Arrivals" : params.get("sale") === "true" ? "On Sale" : "Shop"]
+    const initialFilters = Object.fromEntries(
+        ["section", "sale", "dressStyle", "clothingType", "category", "search", "color", "size"].flatMap((key) => {
+            const value = params.get(key);
+            return value ? [[key, value]] : [];
+        })
+    );
+    const label = params.get("dressStyle") || (params.get("section") === "new-arrivals" ? "New Arrivals" : params.get("section") === "top-selling" ? "Top Selling" : params.get("sale") === "true" ? "On Sale" : params.get("search") ? `Search: ${params.get("search")}` : "Shop");
 
     return(
         <>
 
         <Header/>
-        <Breadcrumb items={path}/>
+        <Breadcrumb items={["Home", label]}/>
         
-        <Filters key={params.toString()} initialFilters={{
-            section: params.get("section") || "",
-            sale: params.get("sale") || ""
-        }}/>
+        <Filters key={params.toString()} initialFilters={initialFilters} title={label}/>
         </>
-    )
+    );
 }
-export default ProductType
+export default ProductType;

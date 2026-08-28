@@ -11,6 +11,7 @@ import Footer from "./components/footer.jsx";
 import RequireAuth from "./components/RequireAuth.jsx";
 import RequireAdmin from "./components/RequireAdmin.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 
@@ -20,6 +21,7 @@ function App() {
       <CartProvider>
         <div className="min-h-screen flex flex-col justify-between bg-white text-black font-sans">
           <div>
+            <ScrollToTop />
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
